@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
 /**
  * FrameUI - A premium, hyper-realistic picture frame system.
@@ -12,6 +12,12 @@ import { customElement } from "lit/decorators.js";
  */
 @customElement("frame-ui")
 export class FrameUI extends LitElement {
+  declare frameColor: string;
+  declare frameWidth: string;
+  declare matColor: string;
+  declare matSize: string;
+  declare material: string;
+  declare glass: boolean;
   static styles = css`
     :host {
       display: inline-block;
@@ -152,54 +158,12 @@ export class FrameUI extends LitElement {
         inset 1.5px 0 1.5px rgba(255, 255, 255, 0.05);
     }
 
-    /* --- WOOD (OAK) --- */
-    :host([material="oak"]) .plank {
-      background-color: #6a4124;
-    }
-    :host([material="oak"]) .plank::before {
-      filter: url("#organic-wood");
-      opacity: 0.95;
-      background: linear-gradient(
-        var(--grain-dir, 0deg),
-        #916140 0%,
-        #4a2b18 100%
-      );
-      mix-blend-mode: soft-light;
-    }
-
-    :host([material="oak"]) .plank-top,
-    :host([material="oak"]) .plank-bottom {
-      --grain-dir: 90deg;
-    }
-    :host([material="oak"]) .plank-left,
-    :host([material="oak"]) .plank-right {
-      --grain-dir: 0deg;
-    }
-
-    :host([material="oak"]) .plank::after {
-      background:
-        linear-gradient(
-          var(--light-dir, 135deg),
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 40%,
-          rgba(0, 0, 0, 0.2) 100%
-        ),
-        /* Simulated fiber reflection (anisotropy) */
-        repeating-linear-gradient(
-            var(--grain-dir, 90deg),
-            transparent 0,
-            transparent 40px,
-            rgba(255, 255, 255, 0.03) 41px,
-            transparent 42px
-          );
-      mix-blend-mode: screen;
-    }
-
     /* --- SATIN (BLACK) --- */
-    :host([material="satin"]) .plank {
+    :host([material="satin"]) .plank,
+    .plank {
       background-color: #121212;
     }
-    :host([material="satin"]) .plank::before {
+    .plank::before {
       background: radial-gradient(
         circle at 1px 1px,
         rgba(255, 255, 255, 0.05) 1px,
@@ -208,7 +172,7 @@ export class FrameUI extends LitElement {
       background-size: 5px 5px;
       opacity: 0.3;
     }
-    :host([material="satin"]) .plank::after {
+    .plank::after {
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.08) 0%,
@@ -458,53 +422,6 @@ export class FrameUI extends LitElement {
 
   render() {
     return html`
-      <div
-        id="textures-root"
-        style="position:absolute; width:0; height:0; visibility:hidden;"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <filter
-            id="organic-wood"
-            x="-50%"
-            y="-50%"
-            width="200%"
-            height="200%"
-          >
-            <!-- Growth Rings -->
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.004 0.12"
-              numOctaves="6"
-              seed="123"
-              result="rings"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="rings"
-              scale="20"
-              result="distorted"
-            />
-
-            <!-- Contrast for "Aged" look -->
-            <feComponentTransfer in="rings" result="aged-grain">
-              <feFuncR type="linear" slope="1.8" intercept="-0.1" />
-              <feFuncG type="linear" slope="1.8" intercept="-0.1" />
-              <feFuncB type="linear" slope="1.8" intercept="-0.1" />
-            </feComponentTransfer>
-
-            <feComposite
-              in="distorted"
-              in2="aged-grain"
-              operator="arithmetic"
-              k1="0.5"
-              k2="0.6"
-              k3="0"
-              k4="0"
-            />
-          </filter>
-        </svg>
-      </div>
-
       <div class="frame-container">
         <!-- Physical Planks (Frame Assembly) -->
         <div class="plank plank-top"></div>

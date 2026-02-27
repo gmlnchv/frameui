@@ -75,6 +75,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "frame-ui",
+      "type": "registry:ui",
+      "title": "Frame UI",
+      "description": "A high-polish, tactile picture frame Web Component.",
+      "dependencies": ["lit"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/frame-ui.ts",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

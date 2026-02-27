@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "American Grotesk Compressed";
+  src: url("/fonts/american-grotesk/regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "American Grotesk Compressed";
+  src: url("/fonts/american-grotesk/medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "American Grotesk Compressed";
+  src: url("/fonts/american-grotesk/bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "American Grotesk Compressed";
+  src: url("/fonts/american-grotesk/black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@theme {
+  --font-heading: "American Grotesk Compressed", ui-sans-serif, system-ui;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0a0a0a] text-neutral-300;
+  }
+}

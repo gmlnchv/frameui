@@ -1,23 +1,48 @@
-# registry-template
+# Frame UI Registry
 
-You can use the `shadcn` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any React project.
+A lightweight, static registry for Frame UI components.
 
-> [!IMPORTANT]  
-> This template uses Tailwind v4. For Tailwind v3, see [registry-template-v3](https://github.com/shadcn-ui/registry-template-v3).
+## Architecture
+
+This project has been optimized for minimal overhead:
+
+- **Registry**: Built using `shadcn build`. Components are defined in `registry.json` and compiled into static JSON files in `public/r/`.
+- **Site**: A single-page static site built with Vite and Tailwind v4.
+- **Components**: Framework-agnostic Web Components built with Lit.
 
 ## Getting Started
 
-This is a template for creating a custom registry using Next.js.
+### Installation
 
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- The template also includes a route handler for serving registry items.
-- Every registry item are compatible with the `shadcn` CLI.
-- We have also added v0 integration using the `Open in v0` api.
+```bash
+pnpm install
+```
+
+### Development
+
+```bash
+pnpm dev
+```
+
+### Build
+
+```bash
+pnpm build
+```
+
+This will:
+
+1. Build the registry JSON files into `public/r/`.
+2. Bundle the landing page into `dist/`.
+
+## Using Components
+
+Install components using the shadcn CLI:
+
+```bash
+npx shadcn@latest add "https://frameui.com/r/frame-ui.json"
+```
 
 ## Documentation
 
-Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
+Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation on registry schemas.

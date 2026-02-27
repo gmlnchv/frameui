@@ -191,7 +191,6 @@ export class FrameUI extends LitElement {
       justify-content: center;
       background-color: #0c0c0c; /* Backing board visible at edges */
       line-height: 0;
-      transition: padding 0.3s ease-out;
       isolation: isolate;
     }
 

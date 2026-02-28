@@ -3,41 +3,52 @@ import "./style.css";
 import "../registry/new-york/ui/frame-ui";
 
 function init() {
-  const frame = document.getElementById("hero-frame") as any;
+  const pgFrame = document.getElementById("playground-frame") as any;
   const matButtons = document.querySelectorAll("[data-mat-size]");
   const glassToggle = document.getElementById("glass-toggle");
-  const glassKnob = document.getElementById("glass-knob");
+  const glassState = document.getElementById("glass-state");
+  const matSizeVal = document.getElementById("mat-size-val");
 
-  if (!frame) return;
+  if (!pgFrame) return;
 
   matButtons.forEach((btnNode) => {
     const btn = btnNode as HTMLElement;
     btn.onclick = () => {
       const size = btn.getAttribute("data-mat-size");
       if (size) {
-        frame.setAttribute("mat-size", size);
+        pgFrame.setAttribute("mat-size", size);
+        if (matSizeVal) matSizeVal.innerText = size;
+
         matButtons.forEach((b) => {
           const el = b as HTMLElement;
-          el.classList.remove("bg-white", "text-black");
-          el.classList.add("bg-neutral-900", "text-neutral-400");
+          el.classList.remove("border-white", "bg-white", "text-black");
+          el.classList.add("border-neutral-800");
         });
-        btn.classList.add("bg-white", "text-black");
-        btn.classList.remove("bg-neutral-900", "text-neutral-400");
+        btn.classList.remove("border-neutral-800");
+        btn.classList.add("border-white", "bg-white", "text-black");
       }
     };
   });
 
-  if (glassToggle && glassKnob) {
+  if (glassToggle) {
     glassToggle.onclick = () => {
-      const isGlass = frame.hasAttribute("glass");
+      const isGlass = pgFrame.hasAttribute("glass");
       if (isGlass) {
-        frame.removeAttribute("glass");
-        glassToggle.classList.replace("bg-white", "bg-neutral-800");
-        glassKnob.classList.replace("translate-x-7", "translate-x-1");
+        pgFrame.removeAttribute("glass");
+        glassToggle.innerText = "Enable Glass Layer";
+        if (glassState) {
+          glassState.innerText = "Disabled";
+          glassState.classList.remove("text-green-500");
+          glassState.classList.add("text-red-500");
+        }
       } else {
-        frame.setAttribute("glass", "");
-        glassToggle.classList.replace("bg-neutral-800", "bg-white");
-        glassKnob.classList.replace("translate-x-1", "translate-x-7");
+        pgFrame.setAttribute("glass", "");
+        glassToggle.innerText = "Disable Glass Layer";
+        if (glassState) {
+          glassState.innerText = "Active";
+          glassState.classList.remove("text-red-500");
+          glassState.classList.add("text-green-500");
+        }
       }
     };
   }

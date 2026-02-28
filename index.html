@@ -3,197 +3,258 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frame UI — Museum-Grade Web Components</title>
+    <title>Frame UI — Professional Image Framing Components</title>
     <meta
       name="description"
-      content="Photorealistic frames for your digital art. Built with Lit."
+      content="Photorealistic frames for your digital art and media. Built with Lit."
     />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body
-    class="bg-[#0a0a0a] font-serif text-neutral-300 selection:bg-white selection:text-black tracking-tight"
-  >
-    <!-- Hero Section -->
-    <section
-      class="relative w-full h-screen flex items-center justify-start overflow-hidden border-b border-neutral-400/80"
-    >
-      <!-- Background Image with Dark Vignette -->
-      <div
-        class="absolute inset-0 z-0 bg-cover bg-bottom bg-no-repeat"
-        style="background-image: url(&quot;/museum_backdrop.png&quot;)"
-      ></div>
+  <body class="bg-dark text-neutral-300 selection:bg-white selection:text-black">
+    
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-baseline mix-blend-difference">
+      <div class="font-heading text-2xl tracking-tighter text-white">FRAME UI</div>
+      <nav class="flex gap-8 font-heading text-xs tracking-widest uppercase text-white/70">
+        <a href="#installation" class="hover:text-white transition-colors">Installation</a>
+        <a href="#examples" class="hover:text-white transition-colors">Examples</a>
+        <a href="https://github.com/gmlnchv/frameui" class="hover:text-white transition-colors">GitHub</a>
+      </nav>
+    </header>
 
-      <!-- Demo Frame -->
-      <div
-        class="relative z-10 w-full max-w-[1700px] mx-auto px-10 lg:px-24 h-full flex items-center"
-      >
-        <div
-          class="w-full max-w-[380px] ml-[2%] lg:ml-[5%] xl:ml-[8%] 2xl:ml-[12%] flex justify-center"
-        >
-          <frame-ui
-            id="hero-frame"
-            material="satin"
-            mat-size="standard"
-            glass
-            class="shadow-[0_40px_90px_rgba(0,0,0,0.6)]"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
-              alt="Abstract Artwork"
-              class="w-full max-w-[240px]"
-            />
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[700px] flex items-center overflow-hidden border-b border-neutral-800">
+      <!-- Background Backdrop -->
+      <div 
+        class="absolute inset-0 z-0 bg-cover bg-bottom pointer-events-none"
+        style="background-image: url('/museum_backdrop.png')"
+      ></div>
+      <div class="absolute inset-0 z-1 bg-linear-to-b from-transparent via-transparent to-dark/80"></div>
+      
+      <!-- Hero Content -->
+      <div class="relative z-10 w-full h-full max-w-7xl mx-auto px-10 flex items-center">
+        <!-- The Wall-Mounted Frame -->
+        <div class="w-full md:w-1/2 flex justify-center md:justify-start lg:pl-12">
+          <div class="relative transition-transform duration-1000 ease-out hover:scale-[1.01]">
+            <frame-ui
+              id="hero-frame"
+              material="satin"
+              mat-size="standard"
+              glass
+              class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.9)]"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
+                alt="Featured Content"
+                class="w-full max-w-[320px] lg:max-w-[400px] block"
+              />
+            </frame-ui>
+            
+            <!-- Floating Label -->
+            <div class="absolute -bottom-16 left-0 lg:left-auto lg:-right-24 lg:top-1/2 lg:-translate-y-1/2">
+              <div class="border-l border-white/20 pl-4 py-1">
+                <span class="block text-white font-serif italic text-lg leading-none">Perspective</span>
+                <span class="block font-heading text-[10px] tracking-[0.2em] uppercase opacity-40 mt-1">Satin / Glass</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Text -->
+        <div class="hidden md:flex flex-col justify-center items-end text-right w-1/2 pointer-events-none pr-12">
+          <h1 class="font-heading text-[clamp(4rem,10vw,8rem)] text-white leading-[0.85] tracking-tighter opacity-10">
+            FRAME<br/>YOUR<br/>WORK
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="max-w-6xl mx-auto px-10 py-32 grid grid-cols-1 md:grid-cols-12 gap-16">
+      <div class="md:col-span-12">
+        <h2 class="font-heading text-8xl text-white tracking-tighter uppercase mb-12 border-b border-neutral-800 pb-8">Overview</h2>
+      </div>
+      <div class="md:col-span-8 space-y-10">
+        <p class="text-4xl font-serif text-neutral-200 leading-[1.15] tracking-tight">
+          Frame UI is a collection of photorealistic web components built for developers who care about physical presence in digital spaces.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-8">
+          <div class="space-y-4">
+            <h4 class="font-heading text-sm tracking-widest text-white uppercase opacity-40">Framework Agnostic</h4>
+            <p class="font-serif text-lg text-neutral-400">Powered by Lit, these components work anywhere HTML does. React, Vue, Svelte, or plain JS.</p>
+          </div>
+          <div class="space-y-4">
+            <h4 class="font-heading text-sm tracking-widest text-white uppercase opacity-40">Performance First</h4>
+            <p class="font-serif text-lg text-neutral-400">Minimal bundle size. Hardware-accelerated CSS filters and box-shadows for high-fidelity depth.</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-4 flex flex-col justify-end gap-12 border-l border-neutral-800 lg:pl-16">
+        <div class="flex items-center gap-4 group cursor-default">
+          <img src="https://cdn.simpleicons.org/lit/white" class="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity" alt="Lit" />
+          <span class="font-heading text-xl tracking-widest uppercase">LIT</span>
+        </div>
+        <div class="flex items-center gap-4 group cursor-default">
+          <img src="https://cdn.simpleicons.org/shadcnui/white" class="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity" alt="shadcn/ui" />
+          <span class="font-heading text-xl tracking-widest uppercase">SHADCN</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section id="installation" class="bg-surface py-32 border-y border-neutral-800/50">
+      <div class="max-w-6xl mx-auto px-10 grid grid-cols-1 md:grid-cols-12 gap-16">
+        <div class="md:col-span-4">
+           <h2 class="font-heading text-6xl text-white uppercase tracking-tighter">Installation</h2>
+           <p class="font-serif text-neutral-400 mt-4">Get up and running in seconds via the shadcn CLI.</p>
+        </div>
+        
+        <div class="md:col-span-8 space-y-12">
+          <div class="bg-dark p-8 border border-neutral-800 rounded-sm">
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-[10px] text-neutral-600 uppercase tracking-widest">Shadcn CLI</span>
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-neutral-800"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-neutral-800"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-neutral-800"></div>
+              </div>
+            </div>
+            <code class="font-mono text-xl text-neutral-300 block select-all">
+              npx shadcn@latest add "https://frameui.com/r/frame-ui.json"
+            </code>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="space-y-4">
+              <h4 class="font-heading text-xs tracking-widest text-white uppercase border-b border-neutral-800 pb-2">Manual Install</h4>
+              <div class="bg-dark/40 p-4 border border-neutral-800/30">
+                <code class="font-mono text-sm text-neutral-500">npm install @frame-ui/core</code>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <h4 class="font-heading text-xs tracking-widest text-white uppercase border-b border-neutral-800 pb-2">Usage</h4>
+              <div class="bg-dark/40 p-4 border border-neutral-800/30">
+                <code class="font-mono text-sm text-neutral-500">import "@frame-ui/core";</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="max-w-6xl mx-auto px-10 py-32 space-y-40">
+      <div class="text-center space-y-6 max-w-3xl mx-auto">
+        <h2 class="font-heading text-8xl text-white uppercase tracking-tighter">Examples</h2>
+        <p class="font-serif text-2xl text-neutral-400">Frame UI handles any content: images, videos, and dynamic components.</p>
+      </div>
+
+      <!-- Example: Images & Materials -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="order-2 lg:order-1 space-y-10">
+          <div class="space-y-4">
+            <h3 class="font-heading text-4xl text-white uppercase">Materials & Mats</h3>
+            <p class="font-serif text-lg text-neutral-400">Choose from different materials like 'satin', 'oak', or 'steel' and adjust the matting size for that perfect museum finish.</p>
+          </div>
+          
+          <div class="bg-neutral-900/40 p-10 border border-neutral-800 space-y-8">
+            <div class="space-y-4">
+              <div class="flex justify-between font-mono text-[10px] uppercase tracking-widest text-neutral-600">
+                <span>Playground Controls</span>
+                <span id="mat-size-val">standard</span>
+              </div>
+              <div class="flex flex-wrap gap-2" id="mat-size-controls">
+                <button data-mat-size="none" class="px-3 py-1.5 border border-neutral-800 text-[10px] font-heading tracking-widest uppercase hover:bg-neutral-800 transition-colors">None</button>
+                <button data-mat-size="small" class="px-3 py-1.5 border border-neutral-800 text-[10px] font-heading tracking-widest uppercase hover:bg-neutral-800 transition-colors">Small</button>
+                <button data-mat-size="standard" class="px-3 py-1.5 border border-white bg-white text-dark text-[10px] font-heading tracking-widest uppercase">Standard</button>
+                <button data-mat-size="large" class="px-3 py-1.5 border border-neutral-800 text-[10px] font-heading tracking-widest uppercase hover:bg-neutral-800 transition-colors">Large</button>
+              </div>
+            </div>
+
+            <button 
+              id="glass-toggle"
+              class="w-full py-3 border border-neutral-700 font-heading text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-dark hover:border-white transition-all"
+            >
+              Toggle Surface Glass
+            </button>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2 flex justify-center py-20 bg-neutral-900/20 border border-neutral-900/50">
+          <frame-ui id="playground-frame" material="satin" mat-size="standard" glass class="shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=800" class="w-64" alt="Artwork" />
+          </frame-ui>
+        </div>
+      </div>
+
+      <!-- Example: Media & Interaction -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="flex justify-center py-20 bg-neutral-900/20 border border-neutral-900/50 overflow-hidden">
+          <frame-ui material="oak" mat-size="xlarge" glass class="shadow-2xl">
+            <iframe 
+              class="w-80 aspect-video" 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&modestbranding=1" 
+              title="Video content" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+            ></iframe>
+          </frame-ui>
+        </div>
+        
+        <div class="space-y-6">
+          <h3 class="font-heading text-4xl text-white uppercase">Video & Rich Media</h3>
+          <p class="font-serif text-lg text-neutral-400">Frame UI isn't just for static images. Wrap videos, iframes, or even live interactive components to give them physical context.</p>
+          <div class="space-y-4 pt-4">
+             <div class="font-mono text-xs text-neutral-500 bg-dark p-4 border border-neutral-800">
+               &lt;frame-ui material="oak" mat-size="xlarge"&gt;<br/>
+               &nbsp;&nbsp;&lt;iframe ... /&gt;<br/>
+               &lt;/frame-ui&gt;
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example: Code & Design Components -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="space-y-6 order-2 lg:order-1">
+          <h3 class="font-heading text-4xl text-white uppercase">Abstracts & Code</h3>
+          <p class="font-serif text-lg text-neutral-400">Use frames to accentuate technical snippets or UI mocks. The subtle depth of the shadowbox creates immediate focus.</p>
+          <div class="p-6 bg-dark border border-neutral-800">
+             <pre class="font-mono text-xs text-neutral-600"><code>// Apply physical glass layer
+frame.setAttribute('glass', '');</code></pre>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2 flex justify-center py-20 bg-neutral-900/20 border border-neutral-900/50">
+          <frame-ui material="steel" mat-size="small" class="shadow-xl">
+             <div class="w-72 p-8 bg-zinc-100 text-zinc-900">
+                <h5 class="font-bold text-lg mb-4">UI Component</h5>
+                <p class="text-sm opacity-60">This is a live component wrapped in a 'steel' frame.</p>
+                <div class="mt-6 h-px bg-zinc-200"></div>
+                <div class="mt-4 flex gap-2">
+                   <div class="w-4 h-4 rounded-full bg-zinc-300"></div>
+                   <div class="w-4 h-4 rounded-full bg-zinc-900"></div>
+                </div>
+             </div>
           </frame-ui>
         </div>
       </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-10 py-32 space-y-40">
-      <!-- Intro -->
-      <section
-        class="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-neutral-900 pb-20"
-      >
-        <div class="md:col-span-4">
-          <h1
-            class="font-heading text-6xl text-white tracking-tight leading-none mt-2"
-          >
-            Frame UI
-          </h1>
+    <!-- Footer -->
+    <footer class="border-t border-neutral-900 py-32 px-10">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="font-heading text-4xl text-white tracking-tighter uppercase">FRAME UI</div>
+        <div class="flex gap-12 font-serif text-neutral-500">
+          <a href="#" class="hover:text-white transition-colors">GitHub</a>
+          <a href="#" class="hover:text-white transition-colors">NPM</a>
+          <a href="#" class="hover:text-white transition-colors">Documentation</a>
         </div>
-        <div class="md:col-span-6 md:col-start-6">
-          <p class="text-2xl font-normal leading-relaxed text-neutral-300">
-            A web component for adding photorealistic frames to images,
-            artworks, and digital collections. Built with Lit to be
-            framework-agnostic.
-          </p>
+        <div class="font-mono text-[10px] text-neutral-600 uppercase tracking-widest">
+          Build for the future / 2026
         </div>
-      </section>
-
-      <!-- Installation -->
-      <section
-        class="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-neutral-900 pb-20"
-      >
-        <div class="md:col-span-4">
-          <h2 class="font-heading text-4xl text-white tracking-tight">
-            Installation
-          </h2>
-        </div>
-        <div class="md:col-span-6 md:col-start-6 space-y-8">
-          <p class="text-lg text-neutral-400">
-            Install the component using the shadcn CLI. This downloads the Web
-            Component to your project.
-          </p>
-          <div
-            class="bg-[#111] p-6 font-mono text-sm border border-neutral-800"
-          >
-            <code class="text-neutral-400">
-              npx shadcn@latest add "https://frameui.com/r/frame-ui.json"
-            </code>
-          </div>
-
-          <p class="text-lg text-neutral-400">
-            Then import it into your application and use it like a regular HTML
-            element via the custom elements registry.
-          </p>
-          <div
-            class="bg-[#111] text-neutral-400 p-6 font-mono text-sm leading-relaxed border border-neutral-800 overflow-x-auto"
-          >
-            <pre><code>import "@frame-ui/core";
-
-// In plain HTML:
-// &lt;frame-ui material="satin"&gt;...&lt;/frame-ui&gt;</code></pre>
-          </div>
-        </div>
-      </section>
-
-      <!-- Usage -->
-      <section class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="md:col-span-4">
-          <h2 class="font-heading text-4xl text-white tracking-tight">Usage</h2>
-        </div>
-        <div class="md:col-span-6 md:col-start-6 space-y-16">
-          <!-- Mat Size -->
-          <div class="space-y-6">
-            <h3
-              class="font-sans font-bold text-white uppercase text-xs tracking-widest"
-            >
-              Mat Size
-            </h3>
-            <p class="text-lg text-neutral-400">
-              You can specify the size of the museum matting. The sizes range
-              from "none" up to "xlarge".
-            </p>
-            <div class="flex flex-wrap gap-2" id="mat-size-controls">
-              <button
-                data-mat-size="none"
-                class="px-4 py-2 bg-neutral-900 text-neutral-400 font-sans font-medium text-xs tracking-wider uppercase transition-colors hover:text-white"
-              >
-                none
-              </button>
-              <button
-                data-mat-size="small"
-                class="px-4 py-2 bg-neutral-900 text-neutral-400 font-sans font-medium text-xs tracking-wider uppercase transition-colors hover:text-white"
-              >
-                small
-              </button>
-              <button
-                data-mat-size="standard"
-                class="px-4 py-2 bg-white text-black font-sans font-medium text-xs tracking-wider uppercase transition-colors"
-              >
-                standard
-              </button>
-              <button
-                data-mat-size="large"
-                class="px-4 py-2 bg-neutral-900 text-neutral-400 font-sans font-medium text-xs tracking-wider uppercase transition-colors hover:text-white"
-              >
-                large
-              </button>
-              <button
-                data-mat-size="xlarge"
-                class="px-4 py-2 bg-neutral-900 text-neutral-400 font-sans font-medium text-xs tracking-wider uppercase transition-colors hover:text-white"
-              >
-                xlarge
-              </button>
-            </div>
-          </div>
-
-          <!-- Glass simulation -->
-          <div class="space-y-6">
-            <h3
-              class="font-sans font-bold text-white uppercase text-xs tracking-widest"
-            >
-              Glass Simulation
-            </h3>
-            <p class="text-lg text-neutral-400">
-              Provides a protective glass layer that simulates physical glare.
-            </p>
-            <div
-              class="flex items-center justify-between p-4 bg-neutral-900 border border-neutral-800"
-            >
-              <span
-                class="font-sans font-medium text-xs uppercase tracking-wider text-neutral-300"
-              >
-                Glass Glare
-              </span>
-              <button
-                id="glass-toggle"
-                class="relative inline-flex h-6 w-12 items-center bg-white transition-all focus:outline-none"
-              >
-                <span
-                  id="glass-knob"
-                  class="inline-block h-4 w-4 transform bg-black transition-transform translate-x-7"
-                ></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer
-      class="max-w-6xl mx-auto px-10 py-12 mt-20 border-t border-neutral-900"
-    >
-      <p class="text-sm text-neutral-500">Georgy Malanichev — Frame UI</p>
+      </div>
     </footer>
 
     <script type="module" src="/src/main.ts"></script>

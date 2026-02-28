@@ -30,11 +30,22 @@
 
 @theme {
   --font-heading: "American Grotesk Compressed", ui-sans-serif, system-ui;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-mono: "Fira Code", monospace;
+
+  --color-museum-dark: #131313;
+  --color-dark: #131313;
+  --color-surface: #1a1a1a;
 }
 
 @layer base {
   body {
-    @apply bg-[#0a0a0a] text-neutral-300;
+    @apply bg-dark text-neutral-300 antialiased;
+  }
+}
+
+@layer utilities {
+  .museum-label {
+    @apply border-l border-neutral-700 pl-4 py-1 text-sm uppercase tracking-widest text-neutral-500;
   }
 }

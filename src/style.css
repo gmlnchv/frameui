@@ -28,9 +28,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Fira Code";
+  src: url("/fonts/fira-code/regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @theme {
   --font-heading: "American Grotesk Compressed", ui-sans-serif, system-ui;
-  --font-serif: "Times New Roman", Times, serif;
   --font-mono: "Fira Code", monospace;
 }
 

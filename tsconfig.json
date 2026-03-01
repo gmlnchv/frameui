@@ -11,12 +11,13 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./*"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["**/*.ts", "src/**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", ".next"]
 }

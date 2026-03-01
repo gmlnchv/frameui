@@ -3,30 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frame UI — Image framing components</title>
+    <title>Frame UI</title>
     <meta
       name="description"
-      content="Photorealistic frames for your digital art and media."
+      content="Frame UI is a Web Component to add realistic-looking frames to DOM elements."
     />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body
-    class="bg-[#f4f4f2] text-neutral-900 selection:bg-neutral-900 selection:text-white pb-32"
+    class="bg-[#f4f4f2] text-neutral-900 selection:bg-neutral-900 selection:text-white font-heading"
   >
     <!-- Hero Section -->
-    <section class="w-full bg-[#f4f4f2] overflow-hidden border-b border-neutral-200"></section>
-      <div class="relative h-[65vh] min-h-[500px] max-w-[1440px] mx-auto overflow-hidden">
+    <section
+      class="w-full bg-[#f4f4f2] overflow-hidden border-b border-neutral-200"
+    >
+      <div
+        class="relative h-[65vh] min-h-[600px] max-w-[1440px] mx-auto overflow-hidden"
+      >
         <!-- Background Backdrop -->
-        <div 
+        <div
           class="absolute inset-0 z-0 bg-cover bg-center pointer-events-none"
-          style="background-image: url('/background.webp')"
+          style="background-image: url(&quot;/background.webp&quot;)"
         ></div>
+
         <!-- Very subtle overlay -->
         <div class="absolute inset-0 z-1 bg-black/5"></div>
-        
+
         <!-- Frame Container -->
-        <div class="relative z-10 w-full h-full px-6 md:px-10 flex flex-col justify-center">
-          <div class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-start md:pl-12 lg:pl-20 xl:pl-32">
+        <div
+          class="relative z-10 w-full h-full px-6 md:px-10 flex flex-col justify-center"
+        >
+          <div
+            class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-start md:pl-12 lg:pl-20 xl:pl-32"
+          >
             <frame-ui
               id="hero-frame"
               mat-size="standard"
@@ -66,24 +75,22 @@
       </div>
 
       <p
-        class="text-4xl text-balance font-serif text-neutral-800 leading-tight tracking-tight"
+        class="text-4xl md:text-6xl font-semibold text-balance text-neutral-800 leading-none -tracking-[0.01em]"
       >
-        Frame UI is a Web Component to add realistic-looking frames to DOM elements.
+        Frame UI is a Web Component to add realistic-looking frames to DOM
+        elements.
       </p>
     </section>
 
     <!-- Installation -->
     <section class="max-w-4xl mx-auto px-10 py-8 space-y-6">
       <h2
-        class="font-heading text-5xl text-neutral-900 font-bold -tracking-[0.01em] mb-6"
+        class="font-heading text-2xl text-neutral-900 font-medium -tracking-[0.01em] mb-4"
       >
         Installation
       </h2>
 
       <div class="space-y-4">
-        <p class="font-serif text-neutral-600">
-          Run the shadcn CLI to add the component to your project:
-        </p>
         <div
           class="bg-white p-4 border border-neutral-200 rounded-sm shadow-sm flex items-center justify-between"
         >
@@ -93,22 +100,13 @@
             npx shadcn@latest add "https://frameui.com/r/frame-ui.json"
           </code>
         </div>
-
-        <p class="font-serif text-neutral-600">
-          Then import and use in your layout:
-        </p>
-        <div class="bg-neutral-100 p-4 border border-neutral-100">
-          <code class="font-mono text-sm text-neutral-700"
-            >import "@frame-ui/core";</code
-          >
-        </div>
       </div>
     </section>
 
     <!-- Usage -->
     <section class="max-w-4xl mx-auto px-10 py-8 space-y-6">
       <h2
-        class="font-heading text-5xl text-neutral-900 font-bold -tracking-[0.01em] mb-6"
+        class="font-heading text-2xl text-neutral-900 font-medium -tracking-[0.01em] mb-4"
       >
         Usage
       </h2>
@@ -130,9 +128,12 @@
           </frame-ui>
         </div>
 
-        <div class="space-y-6 bg-white px-6 py-4 border border-neutral-100 shadow-sm rounded-xs">
+        <div
+          class="space-y-6 bg-white px-6 py-4 border border-neutral-100 shadow-sm rounded-xs"
+        >
           <div class="space-y-2">
-            <label class="font-heading text-2xl font-medium text-neutral-800 block"
+            <label
+              class="font-heading text-2xl font-medium text-neutral-800 block"
               >Mat</label
             >
             <div class="flex flex-wrap gap-2" id="mat-size-controls">
@@ -176,50 +177,168 @@
           </label>
         </div>
       </div>
-
-      <!-- Compact Multiple Aspects & Types -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Portrait HTML/UI Mock -->
-        <div class="flex flex-col gap-4">
-          <div class="flex justify-center">
-            <frame-ui mat-size="small" class="shadow-md">
-              <div
-                class="aspect-3/4 p-4 bg-white text-neutral-900 border border-neutral-100 flex flex-col justify-center items-center text-center"
-              >
-                <div class="w-full"></div>
-              </div>
-            </frame-ui>
-          </div>
-        </div>
-
-        <!-- Landscape Video -->
-        <div class="flex flex-col gap-4">
-          <div class="flex justify-center">
-            <frame-ui mat-size="small" class="shadow-lg">
-              <iframe
-                class="w-full aspect-video"
-                src="https://www.youtube.com/embed/kOZC9X97-fQ?controls=0"
-                title="Video content"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </frame-ui>
-          </div>
-        </div>
-
-        <!-- Square Map/Iframe -->
-        <frame-ui mat-size="small" glass class="shadow-md">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.0197137114214!2d-74.01144318839137!3d40.73959173580652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25894ea097337%3A0xc63f52f9d53d7889!2sWhitney%20Museum%20of%20American%20Art!5e0!3m2!1sen!2snz!4v1772314247626!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </frame-ui>
-
-      </div>
     </section>
+
+    <!-- Gallery Wall -->
+    <div
+      class="flex flex-col lg:flex-row items-start justify-center gap-16 py-20 overflow-hidden w-full"
+    >
+      <div
+        class="shrink-0 transition-transform duration-500 hover:scale-[1.02] max-w-[1600px] mx-auto"
+      >
+        <frame-ui mat-size="small" class="shadow-2xl">
+          <div class="w-64 bg-white flex flex-col p-8 gap-6 shadow-sm">
+            <div
+              class="bg-neutral-50 text-neutral-900 border border-neutral-200 p-1 shadow-md rounded-lg"
+            >
+              <div class="flex items-center gap-2 px-2 py-2 text-left text-sm">
+                <span
+                  class="relative flex shrink-0 overflow-hidden h-9 w-9 rounded-full bg-neutral-100 border border-neutral-200"
+                >
+                  <img
+                    class="h-full w-full"
+                    alt="Avatar"
+                    src="https://api.dicebear.com/9.x/notionists/svg?seed=Milo"
+                  />
+                </span>
+                <div class="grid flex-1 text-left text-sm leading-tight">
+                  <span class="truncate font-semibold">frameui</span>
+                  <span class="text-neutral-500 truncate text-xs"
+                    >m@example.com</span
+                  >
+                </div>
+              </div>
+              <div class="bg-neutral-200 mx-1 my-1 h-px"></div>
+              <div class="p-1 space-y-0.5">
+                <div
+                  class="hover:bg-neutral-100 text-neutral-700 relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  Account
+                </div>
+                <div
+                  class="hover:bg-neutral-100 text-neutral-700 relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                    <line x1="2" x2="22" y1="10" y2="10"></line>
+                  </svg>
+                  Billing
+                </div>
+                <div
+                  class="hover:bg-neutral-100 text-neutral-700 relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                    <path d="M10.3 21a2 2 0 0 0 3.4 0"></path>
+                  </svg>
+                  Notifications
+                </div>
+              </div>
+              <div class="bg-neutral-200 mx-1 my-1 h-px"></div>
+              <div class="p-1">
+                <div
+                  class="hover:bg-red-50 hover:text-red-600 text-neutral-700 relative flex cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" x2="9" y1="12" y2="12"></line>
+                  </svg>
+                  Log out
+                </div>
+              </div>
+            </div>
+          </div>
+        </frame-ui>
+      </div>
+
+      <!-- Landscape Video centerpiece -->
+      <div
+        class="shrink-0 transition-transform duration-700 hover:scale-[1.02]"
+      >
+        <frame-ui
+          mat-size="small"
+          class="shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)]"
+        >
+          <iframe
+            class="w-[320px] md:w-[520px] aspect-video border-none block"
+            src="https://www.youtube.com/embed/kOZC9X97-fQ?controls=0&autoplay=1&mute=1&loop=1&playlist=kOZC9X97-fQ"
+            title="Video content"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </frame-ui>
+      </div>
+
+      <!-- Third-party Iframe (Map) -->
+      <div
+        class="shrink-0 transition-transform duration-500 hover:scale-[1.02]"
+      >
+        <frame-ui mat-size="small" glass class="shadow-2xl">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.0197137114214!2d-74.01144318839137!3d40.73959173580652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25894ea097337%3A0xc63f52f9d53d7889!2sWhitney%20Museum%20of%20American%20Art!5e0!3m2!1sen!2snz!4v1772314247626!5m2!1sen!2snz"
+            class="w-64 h-48 md:w-96 md:h-72 border-none block"
+            loading="lazy"
+          ></iframe>
+        </frame-ui>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer
-      class="max-w-6xl mx-auto px-10 py-12 flex justify-between items-center text-sm font-mono text-neutral-500"
+      class="max-w-6xl mx-auto px-10 py-12 flex justify-between items-center text-sm text-neutral-500"
     >
-      <div>G. Malanichev</div>
+      <div>
+        <a
+          href="https://chrctr.dev"
+          class="hover:text-neutral-900 transition-colors"
+          >Character Development</a
+        >
+      </div>
       <div class="flex gap-6">
         <a href="#" class="hover:text-neutral-900 transition-colors">GitHub</a>
       </div>

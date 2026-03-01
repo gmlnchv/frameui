@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 /**
  * FrameUI - A premium, hyper-realistic picture frame system.
@@ -397,7 +397,7 @@ export class FrameUI extends LitElement {
     this.glass = false;
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("frameColor")) {
       this.style.setProperty("--frame-color", this.frameColor);
     }

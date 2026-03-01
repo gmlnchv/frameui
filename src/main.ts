@@ -2,7 +2,7 @@ import "./style.css";
 import "../registry/new-york/ui/frame-ui";
 
 function init() {
-  const pgFrame = document.getElementById("playground-frame") as any;
+  const pgFrame = document.getElementById("playground-frame") as HTMLElement;
   const matButtons = document.querySelectorAll("[data-mat-size]");
   const glassToggle = document.getElementById(
     "glass-toggle",

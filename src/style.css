@@ -37,11 +37,39 @@
 
 @theme {
   --font-heading: "American Grotesk Compressed", ui-sans-serif, system-ui;
-  --font-mono: "Fira Code", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer base {
   body {
-    @apply bg-[#f4f4f2] text-neutral-900 antialiased;
+    @apply bg-neutral-100 text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white;
   }
+
+  .font-heading {
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+}
+
+.premium-blur {
+  backdrop-filter: blur(12px) saturate(0%);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.gallery-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }

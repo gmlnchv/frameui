@@ -109,19 +109,34 @@
           </div>
 
           <!-- Right: interactive frame -->
-          <div class="flex justify-center lg:justify-end">
+          <div
+            class="flex flex-col items-center lg:items-end justify-center gap-6"
+          >
             <frame-ui
               id="playground-frame"
-              mat-size="standard"
+              mat-size="small"
               glass
               class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out hover:scale-[1.01]"
             >
               <img
-                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
-                alt="Museum Artwork"
+                src="https://www.malikafavre.com/cdn/shop/files/Montreux-Jazz_black_498x698_stamping_cc8514d9-6185-4ff9-8b1b-adca5aa32dab.jpg"
+                alt="2017 Montreux Jazz poster by Malika Favre"
                 class="w-full max-w-[240px] md:max-w-[320px] lg:max-w-[380px] block"
               />
             </frame-ui>
+
+            <p
+              class="text-[10px] uppercase tracking-widest text-neutral-400 text-center lg:text-right"
+            >
+              Art by
+              <a
+                href="https://www.malikafavre.com/products/montreux-jazz-festival-electric-blue?_pos=1&_psq=jazz&_ss=e&_v=1.0"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-neutral-900 transition-colors underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-4"
+                >Malika Favre</a
+              >
+            </p>
           </div>
         </div>
       </div>

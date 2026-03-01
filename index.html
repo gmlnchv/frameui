@@ -153,46 +153,86 @@
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center"
         >
           <frame-ui mat-size="small" class="shadow-2xl">
-            <div class="w-72 bg-white flex flex-col p-10 gap-8">
-              <div
-                class="bg-neutral-50/50 text-neutral-900 border border-neutral-100 p-2 shadow-sm"
-              >
-                <div class="flex items-center gap-4 px-3 py-3 text-left">
+            <div
+              class="w-80 bg-neutral-900 text-neutral-100 p-8 flex flex-col gap-8"
+            >
+              <div class="flex justify-between items-start">
+                <div>
+                  <div
+                    class="text-[10px] tracking-widest text-neutral-500 uppercase mb-1"
+                  >
+                    System Status
+                  </div>
+                  <div
+                    class="text-3xl font-black tracking-tighter leading-none"
+                  >
+                    OPTIMAL
+                  </div>
+                </div>
+                <!-- Pulsing indicator -->
+                <div class="flex h-3 w-3 relative mt-1">
                   <span
-                    class="relative flex shrink-0 overflow-hidden h-10 w-10 rounded-full bg-neutral-200/50"
-                  >
-                    <img
-                      class="h-full w-full grayscale"
-                      alt="Avatar"
-                      src="https://api.dicebear.com/9.x/notionists/svg?seed=Milo"
-                    />
-                  </span>
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"
+                  ></span>
+                  <span
+                    class="relative inline-flex rounded-full h-3 w-3 bg-white"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="h-px w-full bg-neutral-800"></div>
+
+              <div class="grid grid-cols-2 gap-6">
+                <div>
                   <div
-                    class="grid flex-1 text-left text-sm leading-tight grayscale"
+                    class="text-[9px] tracking-widest text-neutral-500 uppercase mb-2"
                   >
-                    <span
-                      class="truncate font-bold uppercase tracking-wider text-xs"
-                      >Frame_UI</span
-                    >
-                    <span
-                      class="text-neutral-400 truncate text-[10px] tracking-widest uppercase"
-                      >System Admin</span
-                    >
+                    Latency
+                  </div>
+                  <div class="text-xl font-mono tracking-tight">
+                    12<span class="text-xs text-neutral-500 ml-1">ms</span>
                   </div>
                 </div>
-                <div class="bg-neutral-200/40 mx-2 my-2 h-px"></div>
-                <div class="p-1 space-y-1">
+                <div>
                   <div
-                    class="hover:bg-neutral-100 text-neutral-400 relative flex cursor-default items-center gap-3 px-3 py-2 text-[10px] tracking-widest uppercase transition-colors"
+                    class="text-[9px] tracking-widest text-neutral-500 uppercase mb-2"
                   >
-                    Account
+                    Uptime
                   </div>
-                  <div
-                    class="hover:bg-neutral-100 text-neutral-400 relative flex cursor-default items-center gap-3 px-3 py-2 text-[10px] tracking-widest uppercase transition-colors"
-                  >
-                    Billing
+                  <div class="text-xl font-mono tracking-tight">
+                    99.9<span class="text-xs text-neutral-500 ml-1">%</span>
                   </div>
                 </div>
+                <div class="col-span-2">
+                  <div class="flex justify-between items-center mb-3">
+                    <div
+                      class="text-[9px] tracking-widest text-neutral-500 uppercase"
+                    >
+                      Network Load
+                    </div>
+                    <div class="text-[9px] font-mono text-neutral-400">65%</div>
+                  </div>
+                  <div class="w-full h-[2px] bg-neutral-800">
+                    <div
+                      class="h-full bg-white w-[65%] shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-2 pt-6 border-t border-neutral-800 flex justify-between items-center"
+              >
+                <div
+                  class="text-[9px] tracking-widest text-neutral-500 font-mono"
+                >
+                  SYS.491.A
+                </div>
+                <button
+                  class="px-4 py-2 border border-neutral-700 hover:border-white hover:bg-white hover:text-neutral-900 text-[9px] font-bold tracking-widest uppercase transition-all duration-300"
+                >
+                  Run Diag
+                </button>
               </div>
             </div>
           </frame-ui>

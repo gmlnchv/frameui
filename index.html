@@ -13,16 +13,18 @@
   <body
     class="bg-neutral-100 text-neutral-900 selection:bg-neutral-900 selection:text-white font-heading overflow-x-hidden"
   >
-    <!-- Hero: type + frame side by side -->
+    <!-- Hero -->
     <section
-      class="w-full min-h-[100svh] flex flex-col justify-center relative overflow-hidden"
+      class="w-full min-h-svh flex flex-col justify-center relative overflow-hidden py-20"
     >
-      <!-- Subtle wall texture behind frame -->
+      <!-- Subtle wall texture -->
       <div
-        class="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-30 grayscale"
-        style="background-image: url(&quot;/background.webp&quot;)"
+        class="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
+        style="
+          background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noise%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23noise)%27/%3E%3C/svg%3E&quot;);
+          background-size: 200px 200px;
+        "
       ></div>
-      <div class="absolute inset-0 z-1 bg-neutral-100/80"></div>
 
       <div
         class="relative z-10 max-w-[1600px] mx-auto w-full px-6 md:px-16 lg:px-20"
@@ -30,7 +32,7 @@
         <div
           class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center"
         >
-          <!-- Left: type block -->
+          <!-- Left: type + controls -->
           <div class="space-y-10">
             <div class="flex items-center gap-6 opacity-30">
               <div class="flex items-center gap-2">
@@ -52,17 +54,53 @@
             </div>
 
             <h1
-              class="text-6xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black text-neutral-900 leading-[0.85] -tracking-[0.02em] uppercase"
+              class="text-6xl md:text-8xl lg:text-[10rem] xl:text-[12rem] font-black text-neutral-900 leading-[0.8] -tracking-[0.02em] uppercase"
             >
               Realistic<br />Frames<br />for DOM<br />Elements
             </h1>
 
-            <div class="max-w-xl pt-4">
+            <!-- Controls row -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                data-mat-size="none"
+                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+              >
+                None
+              </button>
+              <button
+                data-mat-size="small"
+                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+              >
+                Small
+              </button>
+              <button
+                data-mat-size="standard"
+                class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+              >
+                Standard
+              </button>
+              <button
+                data-mat-size="large"
+                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+              >
+                Large
+              </button>
+              <div class="w-px h-5 bg-neutral-300 mx-1"></div>
+              <button
+                id="glass-toggle"
+                class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+              >
+                Glass
+              </button>
+            </div>
+
+            <!-- Install command -->
+            <div class="max-w-xl">
               <div
                 class="bg-white/60 backdrop-blur-sm p-6 border border-neutral-200/60"
               >
                 <code
-                  class="font-mono text-sm md:text-base text-neutral-700 select-all block w-full overflow-x-auto"
+                  class="font-mono text-sm text-neutral-700 select-all block w-full overflow-x-auto"
                   ><span class="opacity-30 mr-3">$</span>npx shadcn@latest add
                   "https://frameui.com/r/frame-ui.json"</code
                 >
@@ -70,13 +108,13 @@
             </div>
           </div>
 
-          <!-- Right: hero frame -->
+          <!-- Right: interactive frame -->
           <div class="flex justify-center lg:justify-end">
             <frame-ui
-              id="hero-frame"
-              mat-size="large"
+              id="playground-frame"
+              mat-size="standard"
               glass
-              class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-1000 ease-out hover:scale-[1.01]"
+              class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out hover:scale-[1.01]"
             >
               <img
                 src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200"
@@ -85,62 +123,6 @@
               />
             </frame-ui>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Playground -->
-    <section class="max-w-[1600px] mx-auto px-6 md:px-16 lg:px-20 py-20">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-16 items-start">
-        <div class="flex justify-center items-center min-h-[600px]">
-          <frame-ui
-            id="playground-frame"
-            mat-size="standard"
-            glass
-            class="shadow-2xl transition-all duration-700"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=800"
-              class="w-72 block"
-              alt="Artwork"
-            />
-          </frame-ui>
-        </div>
-
-        <div class="space-y-8 lg:pt-16">
-          <div class="flex flex-wrap gap-3" id="mat-size-controls">
-            <button
-              data-mat-size="none"
-              class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
-            >
-              None
-            </button>
-            <button
-              data-mat-size="small"
-              class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
-            >
-              Small
-            </button>
-            <button
-              data-mat-size="standard"
-              class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
-            >
-              Standard
-            </button>
-            <button
-              data-mat-size="large"
-              class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
-            >
-              Large
-            </button>
-          </div>
-
-          <button
-            id="glass-toggle"
-            class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
-          >
-            Glass
-          </button>
         </div>
       </div>
     </section>

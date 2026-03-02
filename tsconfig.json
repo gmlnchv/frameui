@@ -16,7 +16,8 @@
       "@/*": ["./*"]
     },
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false
   },
   "include": ["**/*.ts", "**/*.tsx", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", ".next"]

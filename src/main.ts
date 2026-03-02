@@ -1,5 +1,5 @@
 import "./style.css";
-import "../registry/new-york/ui/frame-ui";
+import "../registry/ui/frameui";
 
 function init() {
   const pgFrame = document.getElementById("playground-frame") as HTMLElement;

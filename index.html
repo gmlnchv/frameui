@@ -59,39 +59,116 @@
               Realistic<br />Frames<br />for DOM<br />Elements
             </h1>
 
-            <!-- Controls row -->
-            <div class="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                data-mat-size="none"
-                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+            <!-- Controls row: Mat Size -->
+            <div class="space-y-4">
+              <div
+                class="text-[10px] uppercase tracking-[0.2em] text-neutral-400"
               >
-                None
-              </button>
-              <button
-                data-mat-size="small"
-                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                Mat Size
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <button
+                  data-mat-size="none"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  none
+                </button>
+                <button
+                  data-mat-size="sm"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  sm
+                </button>
+                <button
+                  data-mat-size="md"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                >
+                  md
+                </button>
+                <button
+                  data-mat-size="lg"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  lg
+                </button>
+                <button
+                  data-mat-size="xl"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  xl
+                </button>
+              </div>
+            </div>
+
+            <!-- Controls row: Frame Width -->
+            <div class="space-y-4">
+              <div
+                class="text-[10px] uppercase tracking-[0.2em] text-neutral-400"
               >
-                Small
-              </button>
-              <button
-                data-mat-size="standard"
-                class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                Frame Width
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <button
+                  data-frame-width="xs"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  xs
+                </button>
+                <button
+                  data-frame-width="sm"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  sm
+                </button>
+                <button
+                  data-frame-width="md"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                >
+                  md
+                </button>
+                <button
+                  data-frame-width="lg"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  lg
+                </button>
+                <button
+                  data-frame-width="xl"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  xl
+                </button>
+              </div>
+            </div>
+
+            <!-- Controls row: Material & Glass -->
+            <div class="space-y-4">
+              <div
+                class="text-[10px] uppercase tracking-[0.2em] text-neutral-400"
               >
-                Standard
-              </button>
-              <button
-                data-mat-size="large"
-                class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
-              >
-                Large
-              </button>
-              <div class="w-px h-5 bg-neutral-300 mx-1"></div>
-              <button
-                id="glass-toggle"
-                class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
-              >
-                Glass
-              </button>
+                Finish & Extras
+              </div>
+              <div class="flex flex-wrap items-center gap-3">
+                <button
+                  data-material="satin"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                >
+                  black
+                </button>
+                <button
+                  data-material="white"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                >
+                  white
+                </button>
+                <div class="w-px h-5 bg-neutral-300 mx-1"></div>
+                <button
+                  id="glass-toggle"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                >
+                  glass
+                </button>
+              </div>
             </div>
 
             <!-- Install command -->
@@ -114,7 +191,7 @@
           >
             <frame-ui
               id="playground-frame"
-              mat-size="small"
+              mat-size="sm"
               glass
               class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out hover:scale-[1.01]"
             >
@@ -152,7 +229,7 @@
         <div
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center"
         >
-          <frame-ui mat-size="small" class="shadow-2xl">
+          <frame-ui mat-size="sm" class="shadow-2xl">
             <div
               class="w-80 bg-neutral-900 text-neutral-100 p-8 flex flex-col gap-8"
             >
@@ -243,7 +320,7 @@
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center"
         >
           <frame-ui
-            mat-size="small"
+            mat-size="sm"
             class="shadow-[0_80px_100px_-30px_rgba(0,0,0,0.3)]"
           >
             <iframe
@@ -260,7 +337,7 @@
         <div
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center pr-20"
         >
-          <frame-ui mat-size="small" glass class="shadow-2xl">
+          <frame-ui mat-size="sm" glass class="shadow-2xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.0197137114214!2d-74.01144318839137!3d40.73959173580652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25894ea097337%3A0xc63f52f9d53d7889!2sWhitney%20Museum%20of%20American%20Art!5e0!3m2!1sen!2snz!4v1772314247626!5m2!1sen!2snz"
               class="w-64 h-48 md:w-96 md:h-72 border-none block grayscale contrast-125"

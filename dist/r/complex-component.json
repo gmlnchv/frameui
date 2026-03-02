@@ -20,7 +20,7 @@
     },
     {
       "path": "registry/new-york/blocks/complex-component/components/pokemon-image.tsx",
-      "content": "\"use client\"\n\n/* eslint-disable @next/next/no-img-element */\nimport { usePokemonImage } from \"@/registry/new-york/blocks/complex-component/hooks/use-pokemon\"\n\nexport function PokemonImage({\n  name,\n  number,\n}: {\n  name: string\n  number: number\n}) {\n  const imageUrl = usePokemonImage(number)\n\n  if (!imageUrl) {\n    return null\n  }\n\n  return <img src={imageUrl} alt={name} />\n}\n",
+      "content": "\"use client\";\n\nimport { usePokemonImage } from \"@/registry/new-york/blocks/complex-component/hooks/use-pokemon\";\n\nexport function PokemonImage({\n  name,\n  number,\n}: {\n  name: string;\n  number: number;\n}) {\n  const imageUrl = usePokemonImage(number);\n\n  if (!imageUrl) {\n    return null;\n  }\n\n  return <img src={imageUrl} alt={name} />;\n}\n",
       "type": "registry:component"
     },
     {

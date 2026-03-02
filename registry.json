@@ -5,14 +5,15 @@
   "items": [
     {
       "name": "frameui",
-      "type": "registry:ui",
+      "type": "registry:item",
       "title": "Frame UI",
       "description": "A high-polish, tactile picture frame Web Component.",
       "dependencies": ["lit"],
       "files": [
         {
           "path": "registry/ui/frameui.ts",
-          "type": "registry:ui"
+          "type": "registry:file",
+          "target": "~/components/frameui.ts"
         }
       ]
     }

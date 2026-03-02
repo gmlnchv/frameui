@@ -255,7 +255,7 @@ export class FuiMat extends LitElement {
 export class FuiFrame extends LitElement {
   @property({ type: String }) color = "#222";
   @property({ type: String }) width = "md";
-  @property({ type: String }) material = "satin";
+  @property({ type: String }) finish = "black";
 
   static styles = css`
     :host {
@@ -387,11 +387,11 @@ export class FuiFrame extends LitElement {
         inset 1.5px 0 1.5px rgba(255, 255, 255, 0.05);
     }
 
-    /* --- SATIN BLACK --- */
-    [data-material="satin"] .plank {
+    /* --- BLACK (SATIN) --- */
+    [data-finish="black"] .plank {
       background-color: #121212;
     }
-    [data-material="satin"] .plank::before {
+    [data-finish="black"] .plank::before {
       background: radial-gradient(
         circle at 1px 1px,
         rgba(255, 255, 255, 0.05) 1px,
@@ -400,7 +400,7 @@ export class FuiFrame extends LitElement {
       background-size: 5px 5px;
       opacity: 0.3;
     }
-    [data-material="satin"] .plank::after {
+    [data-finish="black"] .plank::after {
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.08) 0%,
@@ -410,10 +410,10 @@ export class FuiFrame extends LitElement {
     }
 
     /* --- WHITE --- */
-    [data-material="white"] .plank {
+    [data-finish="white"] .plank {
       background-color: #fafafa;
     }
-    [data-material="white"] .plank::before {
+    [data-finish="white"] .plank::before {
       background: radial-gradient(
         circle at 1px 1px,
         rgba(0, 0, 0, 0.03) 1px,
@@ -422,7 +422,7 @@ export class FuiFrame extends LitElement {
       background-size: 5px 5px;
       opacity: 0.5;
     }
-    [data-material="white"] .plank-top {
+    [data-finish="white"] .plank-top {
       background-image: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0.6) 0%,
@@ -433,7 +433,7 @@ export class FuiFrame extends LitElement {
         inset 0 1px 0 rgba(255, 255, 255, 0.8),
         inset 0 -1.5px 1.5px rgba(0, 0, 0, 0.1);
     }
-    [data-material="white"] .plank-bottom {
+    [data-finish="white"] .plank-bottom {
       background-image: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.08) 0%,
@@ -444,7 +444,7 @@ export class FuiFrame extends LitElement {
         inset 0 -1px 0 rgba(0, 0, 0, 0.1),
         inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3);
     }
-    [data-material="white"] .plank-left {
+    [data-finish="white"] .plank-left {
       background-image: linear-gradient(
         to right,
         rgba(255, 255, 255, 0.6) 0%,
@@ -455,7 +455,7 @@ export class FuiFrame extends LitElement {
         inset 1px 0 0 rgba(255, 255, 255, 0.8),
         inset -1.5px 0 1.5px rgba(0, 0, 0, 0.1);
     }
-    [data-material="white"] .plank-right {
+    [data-finish="white"] .plank-right {
       background-image: linear-gradient(
         to left,
         rgba(0, 0, 0, 0.08) 0%,
@@ -473,7 +473,7 @@ export class FuiFrame extends LitElement {
       <div
         class="frame-container"
         data-width=${this.width}
-        data-material=${this.material}
+        data-finish=${this.finish}
         style="--fui-frame-color: ${this.color};"
       >
         <div class="plank plank-top"></div>
@@ -491,11 +491,11 @@ export class FuiFrame extends LitElement {
  */
 @customElement("frame-ui")
 export class FrameUI extends LitElement {
-  @property({ type: String }) frameColor = "#222";
+  @property({ type: String, attribute: "frame-color" }) frameColor = "#222";
   @property({ type: String, attribute: "frame-width" }) frameWidth = "md";
-  @property({ type: String }) matColor = "#ffffff";
+  @property({ type: String, attribute: "mat-color" }) matColor = "#ffffff";
   @property({ type: String, attribute: "mat-width" }) matWidth = "md";
-  @property({ type: String, reflect: true }) material = "satin";
+  @property({ type: String, reflect: true }) finish = "black";
   @property({ type: Boolean, reflect: true }) glass = false;
 
   static styles = css`
@@ -529,7 +529,7 @@ export class FrameUI extends LitElement {
         <fui-frame
           color=${this.frameColor}
           width=${this.frameWidth}
-          material=${this.material}
+          finish=${this.finish}
         >
           <fui-mat color=${this.matColor} size=${this.matWidth}>
             <slot></slot>

@@ -5,7 +5,7 @@ function init() {
   const pgFrame = document.getElementById("playground-frame") as HTMLElement;
   const matButtons = document.querySelectorAll("[data-mat-width]");
   const widthButtons = document.querySelectorAll("[data-frame-width]");
-  const materialButtons = document.querySelectorAll("[data-material]");
+  const finishButtons = document.querySelectorAll("[data-finish]");
   const glassToggle = document.getElementById("glass-toggle") as HTMLElement;
 
   if (!pgFrame) return;
@@ -69,13 +69,13 @@ function init() {
     };
   });
 
-  materialButtons.forEach((btnNode) => {
+  finishButtons.forEach((btnNode) => {
     const btn = btnNode as HTMLElement;
     btn.onclick = () => {
-      const value = btn.getAttribute("data-material");
+      const value = btn.getAttribute("data-finish");
       if (value) {
-        pgFrame.setAttribute("material", value);
-        updateButtons(materialButtons, "data-material", value);
+        pgFrame.setAttribute("finish", value);
+        updateButtons(finishButtons, "data-finish", value);
       }
     };
   });
@@ -110,6 +110,62 @@ function init() {
           "shadow-lg",
         );
       }
+    };
+  }
+
+  // Registry switcher and copy logic
+  const pmButtons = document.querySelectorAll(".pm-btn");
+  const installCode = document.getElementById("install-command");
+  const copyBtn = document.getElementById("copy-install");
+
+  const registryUrl = "https://frameui.chrctr.dev/r/frameui.json";
+  const commands: Record<string, string> = {
+    pnpm: `pnpm dlx shadcn@latest add "${registryUrl}"`,
+    npm: `npx shadcn@latest add "${registryUrl}"`,
+    yarn: `npx shadcn@latest add "${registryUrl}"`,
+    bun: `bunx shadcn@latest add "${registryUrl}"`,
+  };
+
+  pmButtons.forEach((btnNode) => {
+    const btn = btnNode as HTMLElement;
+    btn.onclick = () => {
+      const pm = btn.getAttribute("data-pm");
+      if (pm && installCode) {
+        installCode.textContent = commands[pm];
+
+        // Update button styles
+        pmButtons.forEach((b) => {
+          const el = b as HTMLElement;
+          if (el === btn) {
+            el.classList.remove("text-neutral-400");
+            el.classList.add(
+              "bg-white",
+              "shadow-sm",
+              "border-neutral-200",
+              "text-neutral-900",
+            );
+          } else {
+            el.classList.add("text-neutral-400");
+            el.classList.remove(
+              "bg-white",
+              "shadow-sm",
+              "border-neutral-200",
+              "text-neutral-900",
+            );
+          }
+        });
+      }
+    };
+  });
+
+  if (copyBtn && installCode) {
+    copyBtn.onclick = () => {
+      navigator.clipboard.writeText(installCode.textContent || "");
+      const originalSvg = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<svg class="w-3.5 h-3.5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+      setTimeout(() => {
+        copyBtn.innerHTML = originalSvg;
+      }, 2000);
     };
   }
 }

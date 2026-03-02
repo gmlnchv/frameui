@@ -3,7 +3,7 @@ import "../registry/ui/frameui";
 
 function init() {
   const pgFrame = document.getElementById("playground-frame") as HTMLElement;
-  const matButtons = document.querySelectorAll("[data-mat-size]");
+  const matButtons = document.querySelectorAll("[data-mat-width]");
   const widthButtons = document.querySelectorAll("[data-frame-width]");
   const materialButtons = document.querySelectorAll("[data-material]");
   const glassToggle = document.getElementById("glass-toggle") as HTMLElement;
@@ -50,10 +50,10 @@ function init() {
   matButtons.forEach((btnNode) => {
     const btn = btnNode as HTMLElement;
     btn.onclick = () => {
-      const value = btn.getAttribute("data-mat-size");
+      const value = btn.getAttribute("data-mat-width");
       if (value) {
-        pgFrame.setAttribute("mat-size", value);
-        updateButtons(matButtons, "data-mat-size", value);
+        pgFrame.setAttribute("mat-width", value);
+        updateButtons(matButtons, "data-mat-width", value);
       }
     };
   });

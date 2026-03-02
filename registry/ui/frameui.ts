@@ -494,7 +494,7 @@ export class FrameUI extends LitElement {
   @property({ type: String }) frameColor = "#222";
   @property({ type: String, attribute: "frame-width" }) frameWidth = "md";
   @property({ type: String }) matColor = "#ffffff";
-  @property({ type: String, attribute: "mat-size" }) matSize = "md";
+  @property({ type: String, attribute: "mat-width" }) matWidth = "md";
   @property({ type: String, reflect: true }) material = "satin";
   @property({ type: Boolean, reflect: true }) glass = false;
 
@@ -531,7 +531,7 @@ export class FrameUI extends LitElement {
           width=${this.frameWidth}
           material=${this.material}
         >
-          <fui-mat color=${this.matColor} size=${this.matSize}>
+          <fui-mat color=${this.matColor} size=${this.matWidth}>
             <slot></slot>
             ${this.glass
               ? html`<fui-glass slot="glazing"></fui-glass>`

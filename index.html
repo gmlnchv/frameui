@@ -61,40 +61,40 @@
               Realistic<br />Frames<br />for DOM<br />Elements
             </h1>
 
-            <!-- Controls row: Mat Size -->
+            <!-- Controls row: Mat Width -->
             <div class="space-y-4">
               <div
                 class="text-[10px] uppercase tracking-[0.2em] text-neutral-400"
               >
-                Mat Size
+                Mat Width
               </div>
               <div class="flex flex-wrap items-center gap-3">
                 <button
-                  data-mat-size="none"
+                  data-mat-width="none"
                   class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   none
                 </button>
                 <button
-                  data-mat-size="sm"
+                  data-mat-width="sm"
                   class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   sm
                 </button>
                 <button
-                  data-mat-size="md"
+                  data-mat-width="md"
                   class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
                 >
                   md
                 </button>
                 <button
-                  data-mat-size="lg"
+                  data-mat-width="lg"
                   class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   lg
                 </button>
                 <button
-                  data-mat-size="xl"
+                  data-mat-width="xl"
                   class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   xl
@@ -112,7 +112,7 @@
               <div class="flex flex-wrap items-center gap-3">
                 <button
                   data-frame-width="xs"
-                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
                 >
                   xs
                 </button>
@@ -124,7 +124,7 @@
                 </button>
                 <button
                   data-frame-width="md"
-                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   md
                 </button>
@@ -153,20 +153,20 @@
               <div class="flex flex-wrap items-center gap-3">
                 <button
                   data-material="satin"
-                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   black
                 </button>
                 <button
                   data-material="white"
-                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
+                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
                 >
                   white
                 </button>
                 <div class="w-px h-5 bg-neutral-300 mx-1"></div>
                 <button
                   id="glass-toggle"
-                  class="px-4 py-2 border border-neutral-900 bg-neutral-900 text-white text-xs transition-all uppercase tracking-[0.15em] shadow-lg"
+                  class="px-4 py-2 border border-neutral-300 bg-transparent text-xs hover:border-neutral-900 transition-all uppercase tracking-[0.15em]"
                 >
                   glass
                 </button>
@@ -193,8 +193,9 @@
           >
             <frame-ui
               id="playground-frame"
-              mat-size="sm"
-              glass
+              mat-width="md"
+              frame-width="xs"
+              material="white"
               class="shadow-[0_60px_100px_-20px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out hover:scale-[1.01]"
             >
               <img
@@ -231,7 +232,7 @@
         <div
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center"
         >
-          <frame-ui mat-size="sm" class="shadow-2xl">
+          <frame-ui frame-width="xs" mat-width="sm" class="shadow-2xl">
             <div
               class="w-80 bg-neutral-900 text-neutral-100 p-8 flex flex-col gap-8"
             >
@@ -242,9 +243,7 @@
                   >
                     System Status
                   </div>
-                  <div
-                    class="text-3xl font-black tracking-tighter leading-none"
-                  >
+                  <div class="text-3xl font-black tracking-tight leading-none">
                     OPTIMAL
                   </div>
                 </div>
@@ -322,7 +321,8 @@
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center"
         >
           <frame-ui
-            mat-size="sm"
+            frame-width="sm"
+            mat-width="sm"
             class="shadow-[0_80px_100px_-30px_rgba(0,0,0,0.3)]"
           >
             <iframe
@@ -339,7 +339,7 @@
         <div
           class="shrink-0 transition-all duration-1000 hover:scale-[1.02] snap-center pr-20"
         >
-          <frame-ui mat-size="sm" glass class="shadow-2xl">
+          <frame-ui frame-width="xs" mat-width="sm" glass class="shadow-2xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.0197137114214!2d-74.01144318839137!3d40.73959173580652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25894ea097337%3A0xc63f52f9d53d7889!2sWhitney%20Museum%20of%20American%20Art!5e0!3m2!1sen!2snz!4v1772314247626!5m2!1sen!2snz"
               class="w-64 h-48 md:w-96 md:h-72 border-none block grayscale contrast-125"

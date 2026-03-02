@@ -19,6 +19,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "eslint": "^10.0.2",
     "eslint-plugin-lit": "^2.2.1",
+    "puppeteer": "^24.37.5",
     "shadcn": "^3.0.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2",

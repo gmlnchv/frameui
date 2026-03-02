@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, initial-scale=1.0" />
+    <title>OG Image</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      body {
+        width: 1200px !important;
+        height: 630px !important;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body class="bg-neutral-100 text-neutral-900 font-heading">
+    <div
+      class="flex items-center justify-between w-full px-32 h-full py-16 gap-16"
+    >
+      <div class="flex flex-col max-w-lg">
+        <h1
+          class="text-[8rem] font-black uppercase tracking-tight leading-[0.85] m-0"
+        >
+          Realistic<br />Frames<br />for DOM<br />Elements
+        </h1>
+      </div>
+      <div class="flex items-center">
+        <frame-ui
+          mat-width="md"
+          frame-width="xs"
+          material="white"
+          class="shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)]"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            alt="Abstract Art"
+            class="w-[320px] h-[440px] object-cover block grayscale opacity-90 contrast-125"
+          />
+        </frame-ui>
+      </div>
+    </div>
+  </body>
+</html>

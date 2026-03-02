@@ -40,7 +40,7 @@ This will:
 Install components using the shadcn CLI:
 
 ```bash
-npx shadcn@latest add "https://frameui.com/r/frame-ui.json"
+npx shadcn@latest add "https://frameui.chrctr.dev/r/frameui.json"
 ```
 
 ## Documentation

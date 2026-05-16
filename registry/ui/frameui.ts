@@ -14,20 +14,42 @@ export class FuiGlass extends LitElement {
       z-index: 60;
       pointer-events: none;
       background:
+        /* Primary environmental sheen - broad soft diagonal */
         linear-gradient(
           135deg,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 45%,
-          rgba(255, 255, 255, var(--fui-glare-opacity, 0.15)) 49.5%,
-          rgba(255, 255, 255, var(--fui-glare-opacity, 0.15)) 50.5%,
-          rgba(255, 255, 255, 0) 55%
+          rgba(255, 255, 255, 0) 20%,
+          rgba(255, 255, 255, 0.08) 42%,
+          rgba(255, 255, 255, 0.03) 52%,
+          rgba(255, 255, 255, 0) 75%
         ),
+        /* Secondary window-like reflection streak */
+        linear-gradient(
+            105deg,
+            rgba(255, 255, 255, 0) 35%,
+            rgba(255, 255, 255, 0.04) 48%,
+            rgba(255, 255, 255, 0) 60%
+          ),
+        /* Soft top edge sheen */
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0) 12%
+          ),
+        /* Corner light hotspot */
         radial-gradient(
-          circle at 10% 10%,
-          rgba(255, 255, 255, 0.12) 0%,
-          transparent 45%
-        );
-      mix-blend-mode: screen;
+            ellipse 50% 40% at 15% 12%,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0) 50%
+          ),
+        /* Base glass surface tint */
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.01)
+          );
+      box-shadow:
+        inset 0 0 30px rgba(255, 255, 255, 0.025),
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
     }
   `;
 

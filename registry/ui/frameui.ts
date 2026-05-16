@@ -3,6 +3,9 @@ import { customElement, property } from "lit/decorators.js";
 
 /**
  * FuiGlass - Glass Glazing Component
+ *
+ * Renders a subtle reflective glass surface — organic light reflections
+ * like window light hitting picture frame glass, not a graphic effect.
  */
 @customElement("fui-glass")
 export class FuiGlass extends LitElement {
@@ -10,51 +13,131 @@ export class FuiGlass extends LitElement {
     :host {
       display: block;
       position: absolute;
-      inset: 0;
+      inset: 1px;
       z-index: 60;
       pointer-events: none;
-      background:
-        /* Primary environmental sheen - broad soft diagonal */
-        linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0) 20%,
-          rgba(255, 255, 255, 0.08) 42%,
-          rgba(255, 255, 255, 0.03) 52%,
-          rgba(255, 255, 255, 0) 75%
-        ),
-        /* Secondary window-like reflection streak */
-        linear-gradient(
-            105deg,
-            rgba(255, 255, 255, 0) 35%,
-            rgba(255, 255, 255, 0.04) 48%,
-            rgba(255, 255, 255, 0) 60%
-          ),
-        /* Soft top edge sheen */
-        linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(255, 255, 255, 0) 12%
-          ),
-        /* Corner light hotspot */
-        radial-gradient(
-            ellipse 50% 40% at 15% 12%,
-            rgba(255, 255, 255, 0.06) 0%,
-            rgba(255, 255, 255, 0) 50%
-          ),
-        /* Base glass surface tint */
-        linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.03),
-            rgba(255, 255, 255, 0.01)
-          );
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .pane {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Very faint anti-reflective coating tint (blue-green) */
+      background: linear-gradient(
+        160deg,
+        rgba(185, 210, 235, 0.03) 0%,
+        rgba(175, 200, 225, 0.015) 50%,
+        transparent 100%
+      );
+
+      /*
+       * Glass edge rim lights — the cut edge of the glass pane
+       * catches light differently than the face.
+       */
       box-shadow:
-        inset 0 0 30px rgba(255, 255, 255, 0.025),
-        inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+        inset 0 0.5px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -0.5px 0 rgba(255, 255, 255, 0.05),
+        inset 0.5px 0 0 rgba(255, 255, 255, 0.03),
+        inset -0.5px 0 0 rgba(255, 255, 255, 0.02);
+    }
+
+    .reflection {
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: screen;
     }
   `;
 
   render() {
-    return html``;
+    return html`
+      <div class="pane">
+        <svg
+          class="reflection"
+          viewBox="0 0 400 566"
+          preserveAspectRatio="xMidYMid slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="30" />
+            </filter>
+            <filter id="medium" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="10" />
+            </filter>
+            <filter id="sharp" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="4" />
+            </filter>
+          </defs>
+
+          <!--
+            Ambient room-light base.
+            Large soft rect that gives the glass pane a subtle surface sheen.
+          -->
+          <rect
+            x="-80"
+            y="-60"
+            width="560"
+            height="460"
+            fill="white"
+            fill-opacity="0.03"
+            filter="url(#soft)"
+          />
+
+          <!--
+            Primary directional reflection — like window light hitting
+            the flat glass surface. Skewed rect, brighter at the
+            top-left edge where the light source is.
+          -->
+          <path
+            d="M -40 -30
+               L 280 -10
+               L 340 380
+               L -20 320
+               Z"
+            fill="white"
+            fill-opacity="0.12"
+            filter="url(#medium)"
+          />
+
+          <!--
+            Secondary narrower streak — like a brighter band within
+            the main reflection where light concentrates.
+          -->
+          <path
+            d="M -30 20
+               L 180 40
+               L 220 280
+               L -40 240
+               Z"
+            fill="white"
+            fill-opacity="0.08"
+            filter="url(#medium)"
+          />
+
+          <!--
+            Specular edge highlight — the brightest part where light
+            directly grazes the glass surface. Thin, sharp, reads
+            as a real highlight rather than a placed graphic.
+          -->
+          <path
+            d="M -20 60
+               L 120 75
+               L 110 130
+               L -30 110
+               Z"
+            fill="white"
+            fill-opacity="0.18"
+            filter="url(#sharp)"
+          />
+        </svg>
+      </div>
+    `;
   }
 }
 
@@ -63,8 +146,14 @@ export class FuiGlass extends LitElement {
  */
 @customElement("fui-mat")
 export class FuiMat extends LitElement {
-  @property({ type: String }) size = "md";
-  @property({ type: String }) color = "#ffffff";
+  @property({ type: String }) declare size: string;
+  @property({ type: String }) declare color: string;
+
+  constructor() {
+    super();
+    this.size = "md";
+    this.color = "#ffffff";
+  }
 
   static styles = css`
     :host {
@@ -275,9 +364,16 @@ export class FuiMat extends LitElement {
  */
 @customElement("fui-frame")
 export class FuiFrame extends LitElement {
-  @property({ type: String }) color = "#222";
-  @property({ type: String }) width = "md";
-  @property({ type: String }) finish = "black";
+  @property({ type: String }) declare color: string;
+  @property({ type: String }) declare width: string;
+  @property({ type: String }) declare finish: string;
+
+  constructor() {
+    super();
+    this.color = "#222";
+    this.width = "md";
+    this.finish = "black";
+  }
 
   static styles = css`
     :host {
@@ -513,12 +609,24 @@ export class FuiFrame extends LitElement {
  */
 @customElement("frame-ui")
 export class FrameUI extends LitElement {
-  @property({ type: String, attribute: "frame-color" }) frameColor = "#222";
-  @property({ type: String, attribute: "frame-width" }) frameWidth = "md";
-  @property({ type: String, attribute: "mat-color" }) matColor = "#ffffff";
-  @property({ type: String, attribute: "mat-width" }) matWidth = "md";
-  @property({ type: String, reflect: true }) finish = "black";
-  @property({ type: Boolean, reflect: true }) glass = false;
+  @property({ type: String, attribute: "frame-color" })
+  declare frameColor: string;
+  @property({ type: String, attribute: "frame-width" })
+  declare frameWidth: string;
+  @property({ type: String, attribute: "mat-color" }) declare matColor: string;
+  @property({ type: String, attribute: "mat-width" }) declare matWidth: string;
+  @property({ type: String, reflect: true }) declare finish: string;
+  @property({ type: Boolean, reflect: true }) declare glass: boolean;
+
+  constructor() {
+    super();
+    this.frameColor = "#222";
+    this.frameWidth = "md";
+    this.matColor = "#ffffff";
+    this.matWidth = "md";
+    this.finish = "black";
+    this.glass = false;
+  }
 
   static styles = css`
     :host {
